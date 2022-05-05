@@ -11,8 +11,10 @@ namespace Challenge3
         static void Main(string[] args)
         {
             //Ejercicio1();
-            Ejercicio3();
+            //Ejercicio3();
             //Ejercicio7();
+
+            Ejercicio11();
             Console.ReadKey();
 
         }
@@ -68,16 +70,37 @@ namespace Challenge3
                 numero.Add(numeroRnd.Next(0, 2000));
             }
 
-            //// Para mostrar la lista,usado para comprobar
-            //foreach(int value in numero) 
-            //{
-            //    Console.WriteLine(value);
-            //}
+            // muestro la lista,usado para comprobar
+            foreach (int value in numero)
+            {
+                Console.WriteLine(value);
+            }
 
             Console.WriteLine($"Total: {sumarLista(numero, numero.Count - 1, 0)}");
 
         }
 
+        public static void Ejercicio11()
+        {
+            List<Alumno11> alumnos = new List<Alumno11>();
+            
+            for (int x = 0; x < 10; x++)
+            {
+                alumnos.Add(new Alumno11());
+                alumnos[x].Completar();
+
+            }
+            Console.Clear();
+            Console.WriteLine("Cuatro mejores promedios:");
+            CuatroMejores(alumnos);
+            Console.WriteLine("Alumnos por ultima nota");
+            OrdenaNota(alumnos);
+            
+
+
+
+
+        }
 
 
         #region METODOS 1
@@ -155,6 +178,28 @@ namespace Challenge3
             if(pos >= 0)
             suma += lista[pos] + sumarLista(lista, pos - 1, suma);
             return suma;
+        }
+        #endregion
+
+        #region METODO11
+        public static void CuatroMejores(List<Alumno11> lista)
+        {
+            lista.Sort((x, y) => x.promedio.CompareTo(y.promedio)); // Ordeno segun promedio
+            lista.Reverse();
+            for (int x = 0; x < 4; x++) //muestro los primero 4
+            {
+                lista[x].MostrarPromedio();
+            }
+        }
+
+        public static void OrdenaNota(List<Alumno11> lista)
+        {
+            lista.Sort((x, y) => x.parcial3.CompareTo(y.parcial3)); 
+            lista.Reverse();
+            for (int x = 0; x < lista.Count; x++)
+            {
+                Console.WriteLine($"{lista[x].nombre} - {lista[x].parcial3}");
+            }
         }
         #endregion
 
