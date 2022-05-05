@@ -13,7 +13,7 @@ namespace Challenge3
             //Ejercicio1();
             //Ejercicio3();
             //Ejercicio7();
-            //Ejercicio11();
+            Ejercicio11();
             Console.ReadKey();
 
         }
@@ -89,16 +89,11 @@ namespace Challenge3
                 alumnos[x].Completar();
 
             }
+
             Console.Clear();
-            Console.WriteLine("Cuatro mejores promedios:");
             CuatroMejores(alumnos);
-            Console.WriteLine("Alumnos por ultima nota");
+            Console.WriteLine();
             OrdenaNota(alumnos);
-            
-
-
-
-
         }
 
 
@@ -183,6 +178,7 @@ namespace Challenge3
         #region METODO11
         public static void CuatroMejores(List<Alumno11> lista)
         {
+            Console.WriteLine("Cuatro mejores promedios:");
             lista.Sort((x, y) => x.promedio.CompareTo(y.promedio)); // Ordeno segun promedio
             lista.Reverse();
             for (int x = 0; x < 4; x++) //muestro los primero 4
@@ -193,9 +189,10 @@ namespace Challenge3
 
         public static void OrdenaNota(List<Alumno11> lista)
         {
-            lista.Sort((x, y) => x.parcial3.CompareTo(y.parcial3)); 
+            Console.WriteLine("Alumnos por ultima nota");
+            lista.Sort((x, y) => x.parcial3.CompareTo(y.parcial3)); // Ordeno segun nota 
             lista.Reverse();
-            for (int x = 0; x < lista.Count; x++)
+            for (int x = 0; x < lista.Count; x++) // muestro todos
             {
                 Console.WriteLine($"{lista[x].nombre} - {lista[x].parcial3}");
             }
