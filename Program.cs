@@ -10,8 +10,9 @@ namespace Challenge3
     {
         static void Main(string[] args)
         {
-            Ejercicio1();
-            Ejercicio7();
+            //Ejercicio1();
+            Ejercicio3();
+            //Ejercicio7();
             Console.ReadKey();
 
         }
@@ -26,6 +27,30 @@ namespace Challenge3
                 buscarAlumno(alumnos);
                 Console.WriteLine("Presione S para continuar buscando");
             } while (Console.ReadKey().Key == ConsoleKey.S);
+        }
+
+        public static void Ejercicio3()
+        {
+            List<int> lista = new List<int>(); /// creo lista
+            Random num = new Random();
+
+            for(int i = 0;i<10;i++) /// cargo con random 
+            {
+                lista.Add(num.Next(0,5));
+            }
+
+            foreach(int value in lista) /// muestro lista
+            {
+                Console.WriteLine(value);
+            }
+            Console.Write("Numero a eliminar: "); /// pido numero a eliminar
+            int eliminar = Convert.ToInt32(Console.ReadLine());
+            eliminarLista(lista, eliminar); /// metodo eliminar
+            
+            foreach (int value in lista) /// muestro
+            {
+                Console.WriteLine(value);
+            }
         }
 
         public static void Ejercicio7()
@@ -52,6 +77,8 @@ namespace Challenge3
             Console.WriteLine($"Total: {sumarLista(numero, numero.Count - 1, 0)}");
 
         }
+
+
 
         #region METODOS 1
         static void cargarAlumnos(Alumno[]arreglo)
@@ -113,6 +140,13 @@ namespace Challenge3
                 Console.WriteLine("No se encontro el alumno");
 
 }
+        #endregion
+
+        #region METODOS 3
+        static void eliminarLista(List<int> lis, int x)
+        {
+            lis.RemoveAll(eliminar => eliminar == x);
+        }
         #endregion
 
         #region METODOS 7
