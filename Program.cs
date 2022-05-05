@@ -13,8 +13,7 @@ namespace Challenge3
             //Ejercicio1();
             //Ejercicio3();
             //Ejercicio7();
-
-            Ejercicio11();
+            //Ejercicio11();
             Console.ReadKey();
 
         }
@@ -188,7 +187,7 @@ namespace Challenge3
             lista.Reverse();
             for (int x = 0; x < 4; x++) //muestro los primero 4
             {
-                lista[x].MostrarPromedio();
+               Console.WriteLine($"Alumno: {lista[x].nombre} - Promedio: {lista[x].promedio}");
             }
         }
 

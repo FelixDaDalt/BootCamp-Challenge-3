@@ -89,11 +89,7 @@ namespace Challenge3
             } while (error);
         }
 
-        public void MostrarPromedio()
-        {
-            Console.WriteLine($"Nombre: {nombre} - Promedio:{promedio}");
 
-        }
 
 
     }
