@@ -10,7 +10,7 @@ namespace Challenge3
     {
         static void Main(string[] args)
         {
-            //Ejercicio1();
+            Ejercicio1();
             Ejercicio7();
             Console.ReadKey();
 
@@ -32,20 +32,28 @@ namespace Challenge3
         {
             List<int> numero = new List<int>(); // creo lista
             Random numeroRnd = new Random();
-            for(int i = 0; i < 3; i++)
+
+            int cantidad;               // cantidad de elemtos en la lista
+            do {
+                Console.Write("Cantidad de elemtos: ");
+            } while (!Int32.TryParse(Console.ReadLine(), out cantidad));
+
+            for (int i = 0; i < cantidad; i++) // lleno lista con randoms
             {
-                
                 numero.Add(numeroRnd.Next(0, 2000));
             }
-            foreach(int value in numero)
-            {
-                Console.WriteLine(value);
-            }
+
+            //// Para mostrar la lista,usado para comprobar
+            //foreach(int value in numero) 
+            //{
+            //    Console.WriteLine(value);
+            //}
 
             Console.WriteLine($"Total: {sumarLista(numero, numero.Count - 1, 0)}");
 
         }
 
+        #region METODOS 1
         static void cargarAlumnos(Alumno[]arreglo)
         {
             Random numero = new Random();
@@ -105,13 +113,16 @@ namespace Challenge3
                 Console.WriteLine("No se encontro el alumno");
 
 }
+        #endregion
 
+        #region METODOS 7
         public static int sumarLista(List<int> lista,int pos,int suma)
         {
             if(pos >= 0)
             suma += lista[pos] + sumarLista(lista, pos - 1, suma);
             return suma;
         }
-  
+        #endregion
+
     }
 }
