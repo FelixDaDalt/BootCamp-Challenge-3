@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Challenge3
 {
@@ -12,8 +13,9 @@ namespace Challenge3
         {
             //Ejercicio1();
             //Ejercicio3();
+            //EJercicio5();
             //Ejercicio7();
-            Ejercicio11();
+            //Ejercicio11();
             Console.ReadKey();
 
         }
@@ -52,6 +54,30 @@ namespace Challenge3
             {
                 Console.WriteLine(value);
             }
+        }
+
+        public static void EJercicio5()
+        {
+            List<int> lista1 = new List<int>();
+            List<int> lista2 = new List<int>();
+            List<int> mezcla = new List<int>();
+
+            LlenarLista(lista1);
+            Thread.Sleep(1000);
+            LlenarLista(lista2);
+
+            lista1.Sort();
+            Console.WriteLine("Lista 1");
+            MostrarLista(lista1);
+
+            lista2.Sort();
+            Console.WriteLine("\nLista 2");
+            MostrarLista(lista2);
+
+            mezcla = Mezcla2(lista1, lista2);
+            Console.WriteLine("\nLista Final");
+            MostrarLista(mezcla);
+
         }
 
         public static void Ejercicio7()
@@ -97,7 +123,7 @@ namespace Challenge3
         }
 
 
-        #region METODOS 1
+        #region Metodos 1
         static void cargarAlumnos(Alumno[]arreglo)
         {
             Random numero = new Random();
@@ -159,14 +185,46 @@ namespace Challenge3
 }
         #endregion
 
-        #region METODOS 3
+        #region Metodos 3
         static void eliminarLista(List<int> lis, int x)
         {
             lis.RemoveAll(eliminar => eliminar == x);
         }
         #endregion
 
-        #region METODOS 7
+        #region Metodos 5
+        public static void LlenarLista(List<int>l)
+        {
+            Random num = new Random();
+            for (int x = 0; x < num.Next(0, 10); x++)
+            {
+                l.Add(num.Next(0, 1000));
+
+            }
+        }
+
+        public static void MostrarLista(List<int> l)
+        {
+            foreach(int value in l)
+            {
+                Console.WriteLine(value);
+            }
+        }
+
+        public static List<int> Mezcla2(List<int> l1, List<int> l2)
+        {
+            List<int> listafinal = l1;
+
+            for(int x = 0;x < l2.Count;x++)
+            {
+                listafinal.Add(l2[x]);
+            }          
+
+            return listafinal;
+        }
+        #endregion
+
+        #region Metodos 7
         public static int sumarLista(List<int> lista,int pos,int suma)
         {
             if(pos >= 0)
@@ -175,7 +233,7 @@ namespace Challenge3
         }
         #endregion
 
-        #region METODO11
+        #region Metodos 11
         public static void CuatroMejores(List<Alumno11> lista)
         {
             Console.WriteLine("Cuatro mejores promedios:");
